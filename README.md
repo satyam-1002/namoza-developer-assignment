@@ -5,6 +5,12 @@ Submission for the Developer (Position 1 — Client Web + Martech) assignment.
 **Candidate:** Satyam Singh
 **Client:** OrthoNow (9 clinics — Bengaluru, Hyderabad, Chennai)
 
+## Important Links
+
+- **Repository:** https://github.com/satyam-1002/namoza-developer-assignment
+- **Live Demo (Home):** https://satyam-1002.github.io/namoza-developer-assignment/
+- **Task 2 Landing Page:** https://satyam-1002.github.io/namoza-developer-assignment/task-02-landing-page/
+
 ## Repo structure
 
 ```
