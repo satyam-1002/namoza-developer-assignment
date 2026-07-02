@@ -28,5 +28,5 @@ namoza-developer-assignment/
    no server needed). Fill the form and submit — the confirmation state swaps in without a
    reload, and `window.dataLayer` will show the `consultation_form_submitted` push in the
    console.
-3. **Task 3** — open `task-03-integration-design/INTEGRATION-ARCHITECTURE.md`.
+3. **Task 3** — open `task-03-integration-design/INTEGRATION-ARCHITECTURE.md`
 
