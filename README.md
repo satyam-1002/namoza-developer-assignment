@@ -30,13 +30,3 @@ namoza-developer-assignment/
    console.
 3. **Task 3** — open `task-03-integration-design/INTEGRATION-ARCHITECTURE.md`.
 
-## Before submitting
-
-- Run `task-02-landing-page/index.html` through PageSpeed Insights (Mobile) after hosting it
-  somewhere public (GitHub Pages works fine for this), and drop the screenshot into
-  `task-02-landing-page/` — see `PAGESPEED-NOTES.md` for the exact steps.
-- Record the Loom (max 8 min): GTM schema decisions (~2 min) → live demo of the form submit
-  firing the dataLayer push in the browser console (~3 min) → integration architecture
-  walkthrough (~3 min).
-- Email the repo link + Loom link to naman@namoza.com, subject line:
-  `Developer Assignment - Satyam Singh`.
