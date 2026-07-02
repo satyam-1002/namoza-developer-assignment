@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book an Orthopaedic Consultation | OrthoNow Bengaluru</title>
+<meta name="description" content="Get an expert orthopaedic opinion for knee or back pain. OrthoNow — 9 clinics across Bengaluru, Hyderabad and Chennai. Book a consultation in under a minute.">
+
+<!--
+  OrthoNow — "Book a Consultation" landing page
+  Single self-contained file: HTML + CSS + vanilla JS, no build step, no external requests.
+  No web fonts / no images are loaded on purpose — everything below is system fonts + inline SVG,
+  which is what keeps this at 90+ on PageSpeed Mobile with zero render-blocking requests.
+-->
+
+<style>
+  :root {
+    --ink: #16233B;       /* primary text / headline */
+    --ink-soft: #4B5769;  /* secondary text */
+    --sage: #3F6E62;      /* trust / secondary accent */
+    --sage-light: #E9F0ED;
+    --amber: #F0A202;     /* primary CTA */
+    --amber-dark: #C9840A;
+    --paper: #FAF9F6;     /* page background */
+    --card: #FFFFFF;
+    --line: #E4E1D8;
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+  .brand-mark { width: 30px; height: 30px; flex: none; }
+  .topbar-phone {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sage);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 48px 0 40px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sage);
+    background: var(--sage-light);
+    padding: 6px 12px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-size: clamp(30px, 4.4vw, 44px);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .sub {
+    font-size: clamp(16px, 2vw, 18px);
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 0 28px;
+  }
+
+  /* trust bar */
+  .trust-bar {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    margin-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+  .trust-item { display: flex; align-items: flex-start; gap: 10px; }
+  .trust-item svg { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--sage); }
+  .trust-num { font-weight: 800; font-size: 17px; color: var(--ink); display: block; }
+  .trust-label { font-size: 13px; color: var(--ink-soft); }
+
+  /* ---------- Form card ---------- */
+  .form-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px;
+    box-shadow: 0 1px 2px rgba(22,35,59,0.04), 0 12px 32px rgba(22,35,59,0.06);
+    position: sticky;
+    top: 24px;
+  }
+  .form-card h2 {
+    margin: 0 0 4px;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .form-card p.hint {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .field { margin-bottom: 14px; }
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .field input {
+    width: 100%;
+    padding: 13px 14px;
+    font-size: 16px; /* 16px prevents iOS zoom-on-focus */
+    border: 1px solid #D6D3C8;
+    border-radius: 10px;
+    background: #FCFBF9;
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .field input:focus {
+    outline: 2px solid var(--amber);
+    outline-offset: 1px;
+    border-color: var(--amber);
+  }
+  .cta-btn {
+    width: 100%;
+    padding: 15px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #221200;
+    background: var(--amber);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+  }
+  .cta-btn:hover { background: var(--amber-dark); color: #fff; }
+  .cta-btn:active { transform: scale(0.99); }
+
+  .form-note {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  /* thank-you state */
+  .thankyou { display: none; text-align: center; padding: 12px 4px; }
+  .thankyou.show { display: block; }
+  .thankyou-icon {
+    width: 48px; height: 48px;
+    color: var(--sage);
+    margin: 0 auto 14px;
+  }
+  .thankyou h2 { margin: 0 0 8px; }
+  .thankyou p { margin: 0; color: var(--ink-soft); font-size: 14px; }
+
+  /* ---------- Mobile sticky CTA ---------- */
+  .sticky-cta {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    display: none;
+    padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+    background: rgba(250,249,246,0.96);
+    backdrop-filter: saturate(180%) blur(6px);
+    border-top: 1px solid var(--line);
+    z-index: 20;
+  }
+  .sticky-cta button {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #221200;
+    background: var(--amber);
+    border: none;
+    border-radius: 10px;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 24px 0 40px;
+    color: var(--ink-soft);
+    font-size: 13px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+    .form-card { position: static; }
+    .trust-bar { gap: 20px; }
+    .sticky-cta.visible { display: block; }
+    body { padding-bottom: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <!-- simple inline joint/bone mark, no external image request -->
+      <svg class="brand-mark" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="16" cy="16" r="16" fill="#16233B"/>
+        <path d="M10 20c1.5-4 2.5-6 6-8s4.5-3.5 6-2 0.5 4.5-2 6-4 4.5-8 6-3.5-0.5-2-2z" stroke="#F0A202" stroke-width="1.8" stroke-linejoin="round"/>
+      </svg>
+      OrthoNow
+    </div>
+    <a class="topbar-phone" href="tel:+918041234567">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/></svg>
+      080 4123 4567
+    </a>
+  </div>
+</header>
+
+<main class="hero">
+  <div class="wrap hero-grid">
+
+    <div class="hero-copy">
+      <span class="eyebrow">OrthoNow · Bengaluru · Hyderabad · Chennai</span>
+      <h1>Knee or back pain slowing you down at work?</h1>
+      <p class="sub">
+        Talk to an orthopaedic specialist before it gets worse. OrthoNow runs 9 clinics
+        across Bengaluru, Hyderabad and Chennai, with evening slots built for people who
+        can't take a weekday off.
+      </p>
+
+      <div class="trust-bar">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span><span class="trust-num">4.6 / 5</span><span class="trust-label">from 2,300+ patients</span></span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span><span class="trust-num">MS Ortho</span><span class="trust-label">specialists, 12+ yrs avg. experience</span></span>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          <span><span class="trust-num">9 clinics</span><span class="trust-label">across 3 cities</span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card" id="formCard">
+      <form id="consultForm" novalidate>
+        <h2>Book my consultation</h2>
+        <p class="hint">Takes under a minute. A clinic coordinator will call you back to confirm a slot.</p>
+
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="e.g. Ananya Rao" autocomplete="name" required>
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" autocomplete="tel" inputmode="tel" required>
+        </div>
+
+        <button type="submit" class="cta-btn">Book My Consultation</button>
+        <p class="form-note">No payment now. We'll confirm your slot over a call.</p>
+      </form>
+
+      <div class="thankyou" id="thankYou">
+        <svg class="thankyou-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9.5"/></svg>
+        <h2>Request received</h2>
+        <p>Thanks — a clinic coordinator will call you shortly to confirm your consultation slot.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    OrthoNow — a chain of 9 orthopaedic clinics across Bengaluru, Hyderabad and Chennai. This
+    page is for the "Book a Consultation" campaign only.
+  </div>
+</footer>
+
+<!-- Mobile-only sticky CTA that appears once the hero form has scrolled out of view -->
+<div class="sticky-cta" id="stickyCta">
+  <button type="button" id="stickyBtn">Book My Consultation</button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var form = document.getElementById('consultForm');
+  var thankYou = document.getElementById('thankYou');
+  var formCard = document.getElementById('formCard');
+  var stickyCta = document.getElementById('stickyCta');
+  var stickyBtn = document.getElementById('stickyBtn');
+
+  // window.dataLayer must exist before GTM's container snippet loads on the live site.
+  window.dataLayer = window.dataLayer || [];
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault(); // no page reload — this is a single-page thank-you swap
+
+    var fullName = form.fullName.value.trim();
+    var phone = form.phone.value.trim();
+
+    if (!fullName || !phone) {
+      return; // native "required" attributes handle the messaging
+    }
+
+    // Fires on successful submit only — never on page load.
+    window.dataLayer.push({
+      event: 'consultation_form_submitted',
+      form_location: 'hero',
+      lead_source: 'google_ads_consultation_lp',
+      page_path: window.location.pathname
+    });
+
+    form.style.display = 'none';
+    thankYou.classList.add('show');
+  });
+
+  // Mobile sticky CTA: show once the hero form card has scrolled out of the viewport,
+  // hide again once it's back in view. Pure IntersectionObserver, no scroll-event polling.
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (window.innerWidth > 860) return; // desktop never shows the sticky bar
+        stickyCta.classList.toggle('visible', !entry.isIntersecting);
+      });
+    }, { threshold: 0 });
+    observer.observe(formCard);
+  }
+
+  stickyBtn.addEventListener('click', function () {
+    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    form.fullName.focus();
+  });
+})();
+</script>
+
+</body>
+</html>
